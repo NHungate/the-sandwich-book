@@ -3,7 +3,7 @@ const initialState = [{
     image: 'http://www.placehold.it/500/500',
     thumbnail: 'http://www.placehold.it/100/100',
     instructions: `Courtesy of The Art of Manliness.
-    Chop the green onions.
+      Chop the green onions.
       Butter the bread.
       Layer the munster cheese on the non-buttered side of one of your bread slices.
       Spread Raspberry Preserves on the non-buttered side of the other slice of bread.

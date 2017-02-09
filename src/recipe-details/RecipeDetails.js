@@ -18,10 +18,11 @@ class RecipeDetails extends Component {
       return <li key={index}>{ingredient}</li>
     });
 
-    const instructions = this.selectedRecipe.instructions.replace('/[\r\n]{2,}/g', '\n').split('\n').map((instruction, index) => {
+    const instructions = this.selectedRecipe.instructions.replace(/\n\s*\n/g, '\n').split('\n').map((instruction, index) => {
       if (instruction && instruction.trim()) {
         return <p key={index}>{instruction.trim()}</p>
       }
+      return null;
     });
 
     return (
