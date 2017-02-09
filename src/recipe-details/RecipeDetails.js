@@ -18,28 +18,25 @@ class RecipeDetails extends Component {
       return <li key={index}>{ingredient}</li>
     });
 
-    const instruction = this.selectedRecipe.instructions.replace('/[\r\n]{2,}/g', '\n').split('\n');
-    console.log(instruction);
-
-    const instructions = instruction.map((instruction, index) => {
-      if (instruction) {
-        return <p key={index}>{instruction}</p>
+    const instructions = this.selectedRecipe.instructions.replace('/[\r\n]{2,}/g', '\n').split('\n').map((instruction, index) => {
+      if (instruction && instruction.trim()) {
+        return <p key={index}>{instruction.trim()}</p>
       }
     });
 
     return (
       <section>
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-sm-4 col-sm-push-8">
+            <img className="img-responsive" src={this.selectedRecipe.image} alt={`${this.selectedRecipe.name}`} />
+          </div>
+          <div className="col-sm-8 col-sm-pull-4">
             <h2>{this.selectedRecipe.name}</h2>
             <hr />
             <h3>Ingredients</h3>
             <ul>
               {ingredients}
             </ul>
-          </div>
-          <div className="col-md-4">
-            <img className="img-responsive" src={this.selectedRecipe.image} alt={`${this.selectedRecipe.name}`} />
           </div>
         </div>
         <div className="row">
