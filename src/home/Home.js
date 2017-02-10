@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import RecipesList from '../recipes-list/RecipesList';
 
-class Home extends Component {
+export class Home extends Component {
   render() {
     return (
       <RecipesList recipes={this.props.recipes} />
