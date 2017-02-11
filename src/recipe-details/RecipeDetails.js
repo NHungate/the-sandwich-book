@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as Actions from './actions';
 
 export class RecipeDetails extends Component {
   constructor(props) {
     super(props);
 
-    const id = props.params.id;
-    this.selectedRecipe = props.recipes[id];
+    this.id = props.params.id;
+  }
+
+  componentDidMount() {
+    this.props.actions.fetchSandwich(this.id);
   }
 
   renderInstructions(instructionsText) {
+    if (!instructionsText) { return; }
+
     const instructions = instructionsText.replace(/\n\s*\n/g, '\n').split('\n').map((instruction, index) => {
       if (instruction && instruction.trim()) {
         return <p key={index}>{instruction.trim()}</p>
@@ -21,24 +28,24 @@ export class RecipeDetails extends Component {
   }
 
   render() {
-    if (!this.selectedRecipe) {
+    if (!this.props.selectedSandwich.name) {
       return <div></div>
     }
 
-    const ingredients = this.selectedRecipe.ingredients.map((ingredient, index) => {
+    const ingredients = this.props.selectedSandwich.ingredients.map((ingredient, index) => {
       return <li key={index}>{ingredient}</li>
     });
 
-    const instructions = this.renderInstructions(this.selectedRecipe.instructions);
+    const instructions = this.renderInstructions(this.props.selectedSandwich.instructions);
 
     return (
       <section>
         <div className="row">
           <div className="col-sm-4 col-sm-push-8">
-            <img className="img-responsive" src={this.selectedRecipe.image} alt={`${this.selectedRecipe.name}`} />
+            <img className="img-responsive" src={this.props.selectedSandwich.image.full} alt={`${this.props.selectedSandwich.name}`} />
           </div>
           <div className="col-sm-8 col-sm-pull-4">
-            <h2>{this.selectedRecipe.name}</h2>
+            <h2>{this.props.selectedSandwich.name}</h2>
             <hr />
             <h3>Ingredients</h3>
             <ul>
@@ -59,8 +66,14 @@ export class RecipeDetails extends Component {
 
 function mapStateToProps(state) {
   return {
-    recipes: state.recipes
+    selectedSandwich: state.selectedSandwich
   };
 }
 
-export default connect(mapStateToProps)(RecipeDetails);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(Actions, dispatch)
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeDetails);

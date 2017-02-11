@@ -4,16 +4,17 @@ import { shallow } from 'enzyme';
 
 function setup() {
   const initialState = {
-    recipes: [{
-      name: 'Name',
-      ingredients: [],
-      instructions: ''
-    }]
+    name: 'Name',
+    ingredients: ['4 Slices of cheese'],
+    instructions: 'Hello\n\n\nWorld',
+    image: {
+
+    }
   };
 
   const props = {
     params: { id: 0 },
-    recipes: initialState.recipes
+    selectedSandwich: initialState
   };
 
   const enzymeWrapper = shallow(

@@ -1,14 +1,12 @@
-import { FETCH_SANDWICH } from './actions';
+import { FETCH_SANDWICH_RECEIVED } from './actions';
 
-const initialState = {
-  selectedRecipe: {}
-};
+const initialState = {};
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_SANDWICH:
+    case FETCH_SANDWICH_RECEIVED:
       return {
-        ...state, selectedRecipe: action.payload
+        ...state, ...action.payload
       };
     default:
       return state;

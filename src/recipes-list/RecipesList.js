@@ -8,12 +8,12 @@ const RecipesList = (props) => {
     return <p>Loading...</p>
   }
 
-  const recipeItems = props.recipes.map((recipe) => {
+  const recipeItems = props.recipes.map((recipe, index) => {
     return <RecipeItem
       recipeName={recipe.name}
-      recipeThumbnail={recipe.thumbnail}
+      recipeThumbnail={recipe.image.thumbnail}
       recipeId={recipe.id}
-      key={recipe.id}
+      key={index}
     />
   });
 

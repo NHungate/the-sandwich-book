@@ -14,7 +14,7 @@ it('should display a loading <p> when not provided recipes', () => {
 
 it('should display two <RecipeItem />s when provided with recipes', () => {
   const props = {
-    recipes: [{id: 0}, {id: 1}]
+    recipes: [{id: 0, image: {}}, {id: 1, image: {}}]
   };
 
   const wrapper = shallow(<RecipesList {...props} />);
