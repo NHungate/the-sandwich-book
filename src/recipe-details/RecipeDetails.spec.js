@@ -26,13 +26,17 @@ function setup() {
   }
 }
 
-describe('<RecipeDetails />', () => {
-  it('renders without crashing', () => {
-    setup();
-  });
+it('renders without crashing', () => {
+  setup();
+});
 
-  it('should render a `.recipe-details`', () => {
-    const { enzymeWrapper } = setup();
-    expect(enzymeWrapper.find('section').exists()).toBe(true);
-  });
+it('should render <section>', () => {
+  const { enzymeWrapper } = setup();
+  expect(enzymeWrapper.find('section')).toHaveLength(1);
+});
+
+it('should return two <p>', () => {
+  const { enzymeWrapper } = setup();
+  const instructionsElements = enzymeWrapper.instance().renderInstructions('Hello\n\n\n\nWorld');
+  expect(instructionsElements).toHaveLength(2);
 });

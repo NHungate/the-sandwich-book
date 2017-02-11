@@ -9,6 +9,17 @@ export class RecipeDetails extends Component {
     this.selectedRecipe = props.recipes[id];
   }
 
+  renderInstructions(instructionsText) {
+    const instructions = instructionsText.replace(/\n\s*\n/g, '\n').split('\n').map((instruction, index) => {
+      if (instruction && instruction.trim()) {
+        return <p key={index}>{instruction.trim()}</p>
+      }
+      return null;
+    });
+
+    return instructions;
+  }
+
   render() {
     if (!this.selectedRecipe) {
       return <div></div>
@@ -18,12 +29,7 @@ export class RecipeDetails extends Component {
       return <li key={index}>{ingredient}</li>
     });
 
-    const instructions = this.selectedRecipe.instructions.replace(/\n\s*\n/g, '\n').split('\n').map((instruction, index) => {
-      if (instruction && instruction.trim()) {
-        return <p key={index}>{instruction.trim()}</p>
-      }
-      return null;
-    });
+    const instructions = this.renderInstructions(this.selectedRecipe.instructions);
 
     return (
       <section>
