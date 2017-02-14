@@ -10,4 +10,10 @@ const RecipeItem = (props) => {
   )
 };
 
+RecipeItem.propTypes = {
+  recipeId: React.PropTypes.number.isRequired,
+  recipeName: React.PropTypes.string.isRequired,
+  recipeThumbnail: React.PropTypes.string.isRequired
+};
+
 export default RecipeItem;

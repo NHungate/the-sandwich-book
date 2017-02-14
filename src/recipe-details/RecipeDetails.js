@@ -10,6 +10,16 @@ export class RecipeDetails extends Component {
     this.id = props.params.id;
   }
 
+  static propTypes = {
+    selectedSandwich: React.PropTypes.shape({
+      id: React.PropTypes.number,
+      image: React.PropTypes.object,
+      ingredients: React.PropTypes.array,
+      instructions: React.PropTypes.string,
+      name: React.PropTypes.string
+    }).isRequired
+  }
+
   componentDidMount() {
     this.props.actions.fetchSandwich(this.id);
   }

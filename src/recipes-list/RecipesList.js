@@ -22,4 +22,14 @@ const RecipesList = (props) => {
   );
 }
 
+RecipesList.propTypes = {
+  recipes: React.PropTypes.arrayOf(React.PropTypes.shape({
+    id: React.PropTypes.number,
+    image: React.PropTypes.object,
+    ingredients: React.PropTypes.array,
+    instructions: React.PropTypes.string,
+    name: React.PropTypes.string
+  }))
+}
+
 export default RecipesList;
