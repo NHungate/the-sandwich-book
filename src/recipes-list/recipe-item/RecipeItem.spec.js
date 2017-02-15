@@ -3,11 +3,7 @@ import { shallow } from 'enzyme';
 import RecipeItem from './RecipeItem';
 import { Link } from 'react-router';
 
-it('renders without crashing', () => {
-  shallow(<RecipeItem />);
-});
-
-it('displays a <Link>', () => {
+function setup() {
   const props = {
     recipeId: 0,
     recipeThumbnail: '',
@@ -15,5 +11,16 @@ it('displays a <Link>', () => {
   };
 
   const wrapper = shallow(<RecipeItem {...props} />);
+
+  return { props, wrapper };
+}
+
+it('renders without crashing', () => {
+  setup();
+});
+
+it('displays a <Link>', () => {
+  const { wrapper } = setup();
+
   expect(wrapper.find(Link)).toHaveLength(1);
 });

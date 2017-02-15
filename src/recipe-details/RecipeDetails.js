@@ -24,7 +24,8 @@ export class RecipeDetails extends Component {
     this.props.actions.fetchSandwich(this.id);
   }
 
-  renderInstructions(instructionsText) {
+  renderInstructions() {
+    const instructionsText = this.props.selectedSandwich.instructions;
     if (!instructionsText) { return; }
 
     const instructions = instructionsText.replace(/\n\s*\n/g, '\n').split('\n').map((instruction, index) => {
@@ -46,8 +47,6 @@ export class RecipeDetails extends Component {
       return <li key={index}>{ingredient}</li>
     });
 
-    const instructions = this.renderInstructions(this.props.selectedSandwich.instructions);
-
     return (
       <section>
         <div className="row">
@@ -66,7 +65,7 @@ export class RecipeDetails extends Component {
         <div className="row">
           <div className="col-xs-12">
             <h3>Instructions</h3>
-            {instructions}
+            {this.renderInstructions()}
           </div>
         </div>
       </section>
