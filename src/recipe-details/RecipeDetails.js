@@ -30,7 +30,11 @@ export class RecipeDetails extends Component {
 
     const instructions = instructionsText.replace(/\n\s*\n/g, '\n').split('\n').map((instruction, index) => {
       if (instruction && instruction.trim()) {
-        return <p key={index}>{instruction.trim()}</p>
+        return (
+          <li key={index}>
+            <p key={index}>{instruction.trim()}</p>
+          </li>
+        )
       }
       return null;
     });
@@ -48,24 +52,53 @@ export class RecipeDetails extends Component {
     });
 
     return (
-      <section>
-        <div className="row">
-          <div className="col-sm-4 col-sm-push-8">
-            <img className="img-responsive" src={this.props.selectedSandwich.image.full} alt={`${this.props.selectedSandwich.name}`} />
+      <section className="section">
+        <div className="container">
+          <div className="columns">
+            <div className="column">
+              <h2 className="title">{this.props.selectedSandwich.name}</h2>
+              <hr />
+            </div>
           </div>
-          <div className="col-sm-8 col-sm-pull-4">
-            <h2>{this.props.selectedSandwich.name}</h2>
-            <hr />
-            <h3>Ingredients</h3>
-            <ul>
-              {ingredients}
-            </ul>
+          <div className="columns">
+            <div className="column">
+              <figure className="image is-4by3">
+                <img src={this.props.selectedSandwich.image.full} alt={`${this.props.selectedSandwich.name}`} />
+              </figure>
+            </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-xs-12">
-            <h3>Instructions</h3>
-            {this.renderInstructions()}
+        <div className="container">
+          <div className="columns">
+            <div className="column">
+              <div className="box">
+                <div className="media">
+                  <div className="media-content">
+                    <p>Added by: <span>Nathan Hungate</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column is-one-third">
+              <div className="box">
+                <h3 className="title">Ingredients</h3>
+                <hr />
+                <ul>
+                  {ingredients}
+                </ul>
+              </div>
+            </div>
+            <div className="column">
+              <div className="box">
+                <h3 className="title">Instructions</h3>
+                <hr />
+                <ol>
+                  {this.renderInstructions()}
+                </ol>
+              </div>
+            </div>
           </div>
         </div>
       </section>

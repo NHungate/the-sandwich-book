@@ -18,7 +18,11 @@ const RecipesList = (props) => {
   });
 
   return (
-    <div className="list-group">{recipeItems}</div>
+    <div className="container">
+      <div className="columns">
+        {recipeItems}
+      </div>
+    </div>
   );
 }
 

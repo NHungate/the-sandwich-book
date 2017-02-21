@@ -16,7 +16,9 @@
     "redux-mock-store": "^1.2.2"
   },
   "dependencies": {
+    "bulma": "^0.3.1",
     "firebase": "^3.6.9",
+    "flexboxgrid": "^6.3.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",

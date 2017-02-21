@@ -12,7 +12,20 @@ export class Home extends Component {
 
   render() {
     return (
-      <RecipesList recipes={this.props.recipes} />
+      <section>
+        <section className="hero is-primary">
+          <div className="hero-body">
+            <div className="columns">
+              <div className="column">
+                <p className="title">Delicious Sandwiches</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="section">
+          <RecipesList recipes={this.props.recipes} />
+        </section>
+      </section>
     )
   }
 }
